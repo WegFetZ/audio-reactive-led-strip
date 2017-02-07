@@ -11,13 +11,17 @@ if config.DEVICE == 'esp8266':
     _sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 # Raspberry Pi controls the LED strip directly
 elif config.DEVICE == 'pi':
-    import neopixel
     """
+    import neopixel
     strip = neopixel.Adafruit_NeoPixel(config.N_PIXELS, config.LED_PIN,
                                        config.LED_FREQ_HZ, config.LED_DMA,
                                        config.LED_INVERT, config.BRIGHTNESS)
     strip.begin()
     """
+    # Import the WS2801 module.
+    import Adafruit_WS2801
+    import Adafruit_GPIO.SPI as SPI
+
     PIXEL_CLOCK = 18
     PIXEL_DOUT  = 23
     strip = Adafruit_WS2801.WS2801Pixels(config.N_PIXELS, clk=PIXEL_CLOCK, do=PIXEL_DOUT)
