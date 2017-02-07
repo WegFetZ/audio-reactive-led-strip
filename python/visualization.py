@@ -1,8 +1,6 @@
 from __future__ import print_function
 from __future__ import division
-print("TEST-1")#TODO:remove
 import time
-time.sleep(15)
 import numpy as np
 from scipy.ndimage.filters import gaussian_filter1d
 import config
@@ -10,14 +8,11 @@ import microphone
 import dsp
 import led
 
-print("TEST0")#TODO:remove
 _time_prev = time.time() * 1000.0
 """The previous time that the frames_per_second() function was called"""
 
 _fps = dsp.ExpFilter(val=config.FPS, alpha_decay=0.2, alpha_rise=0.2)
 """The low-pass filter used to estimate frames-per-second"""
-
-print("TEST1")#TODO:remove
 
 def frames_per_second():
     """Return the estimated frames per second
